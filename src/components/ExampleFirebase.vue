@@ -4,34 +4,34 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import { messaging } from '../firebaseConf';
-import { getToken, onMessage } from 'firebase/messaging';
+// import { messaging } from '../firebaseConf';
+// import { getToken, onMessage } from 'firebase/messaging';
 
 const deviceToken = ref<string | null>(null);
 
 async function requestNotificationPermission() {
-  try {
-    const permission = await Notification.requestPermission();
-    if (permission === 'granted') {
-      deviceToken.value = await getToken(messaging, {
-        vapidKey:
-          'BKxaVbXostmFolcbC7dq9VOwqMJkZtClPi_x2CkfTXnh5yxeGA_92bI-PG_QfJ0Um9iZUFjp9joHARxaKjnrl1E', // Replace with your actual public VAPID key
-      });
-      console.log('Device Token:', deviceToken.value);
-      // Send the token to your server here
-    } else {
-      console.warn('Notification permission not granted');
-    }
-  } catch (error) {
-    console.error('Error getting device token:', error);
-  }
+  // try {
+  //   const permission = await Notification.requestPermission();
+  //   if (permission === 'granted') {
+  //     deviceToken.value = await getToken(messaging, {
+  //       vapidKey:
+  //         'BKxaVbXostmFolcbC7dq9VOwqMJkZtClPi_x2CkfTXnh5yxeGA_92bI-PG_QfJ0Um9iZUFjp9joHARxaKjnrl1E', // Replace with your actual public VAPID key
+  //     });
+  //     console.log('Device Token:', deviceToken.value);
+  //     // Send the token to your server here
+  //   } else {
+  //     console.warn('Notification permission not granted');
+  //   }
+  // } catch (error) {
+  //   console.error('Error getting device token:', error);
+  // }
 }
 
 function listenForMessages() {
-  onMessage(messaging, (payload) => {
-    console.log('Message received:', payload);
-    // Handle foreground messages here
-  });
+  // onMessage(messaging, (payload) => {
+  //   console.log('Message received:', payload);
+  //   // Handle foreground messages here
+  // });
 }
 
 onMounted(() => {
