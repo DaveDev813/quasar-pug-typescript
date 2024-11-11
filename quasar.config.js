@@ -165,7 +165,7 @@ module.exports = configure(function (/* ctx */) {
       swFilename: 'sw.js',
       manifestFilename: 'manifest.json',
       useCredentialsForManifestTag: false,
-      swSrc: 'public/firebase-messaging-sw.js',
+      // swSrc: 'public/firebase-messaging-sw.js',
       // useFilenameHashes: true,
       // extendGenerateSWOptions (cfg) {}
       // extendInjectManifestOptions (cfg) {},
