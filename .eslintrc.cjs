@@ -12,6 +12,8 @@ module.exports = {
     extraFileExtensions: ['.vue'],
   },
 
+  ignorePatterns: ['.eslintrc.js', 'src-pwa/.eslintrc.js'],
+
   env: {
     browser: true,
     es2021: true,

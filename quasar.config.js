@@ -46,7 +46,7 @@ module.exports = configure(function (/* ctx */) {
         node: 'node20',
       },
 
-      vueRouterMode: 'hash', // available values: 'hash', 'history'
+      vueRouterMode: 'history', // available values: 'hash', 'history'
       // vueRouterBase,
       // vueDevtools,
       // vueOptionsAPI: false,
@@ -83,12 +83,12 @@ module.exports = configure(function (/* ctx */) {
         [
           'vite-plugin-checker',
           {
-            vueTsc: {
-              tsconfigPath: 'tsconfig.vue-tsc.json',
-            },
-            eslint: {
-              lintCommand: 'eslint "./**/*.{js,ts,mjs,cjs,vue}"',
-            },
+            // vueTsc: {
+            //   tsconfigPath: 'tsconfig.vue-tsc.json',
+            // },
+            // eslint: {
+            //   lintCommand: 'eslint "./**/*.{js,ts,mjs,cjs,vue}"',
+            // },
           },
           { server: false },
         ],
@@ -118,7 +118,7 @@ module.exports = configure(function (/* ctx */) {
       // directives: [],
 
       // Quasar plugins
-      plugins: [],
+      plugins: ['Notify'],
     },
 
     // animations: 'all', // --- includes all animations
@@ -160,17 +160,37 @@ module.exports = configure(function (/* ctx */) {
 
     // https://v2.quasar.dev/quasar-cli-vite/developing-pwa/configuring-pwa
     pwa: {
-      workboxMode: 'generateSW', // or 'injectManifest'
-      injectPwaMetaTags: true,
-      swFilename: 'sw.js',
-      manifestFilename: 'manifest.json',
-      useCredentialsForManifestTag: false,
+      // workboxMode: 'generateSW', // or 'injectManifest'
+      // injectPwaMetaTags: true,
+      // swFilename: 'sw.js',
+      // manifestFilename: 'manifest.json',
+      // useCredentialsForManifestTag: false,
       swSrc: 'public/firebase-messaging-sw.js',
-      // useFilenameHashes: true,
-      // extendGenerateSWOptions (cfg) {}
-      // extendInjectManifestOptions (cfg) {},
-      // extendManifestJson (json) {}
-      // extendPWACustomSWConf (esbuildConf) {}
+      // // useFilenameHashes: true,
+      // // extendGenerateSWOptions (cfg) {}
+      // // extendInjectManifestOptions (cfg) {},
+      // // extendManifestJson (json) {}
+      // // extendPWACustomSWConf (esbuildConf) {}
+
+      workboxMode: 'injectManifest',
+      injectPwaMetaTags: true,
+      manifest: {
+        name: 'My PWA App',
+        short_name: 'PWA App',
+        description: 'My Progressive Web App',
+        display: 'standalone',
+        orientation: 'portrait',
+        background_color: '#ffffff',
+        theme_color: '#027be3',
+        icons: [
+          {
+            src: 'icons/icon-128x128.png',
+            sizes: '128x128',
+            type: 'image/png',
+          },
+          // Add other icon sizes as needed
+        ],
+      },
     },
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/developing-cordova-apps/configuring-cordova

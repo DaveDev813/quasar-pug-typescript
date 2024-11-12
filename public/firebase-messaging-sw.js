@@ -18,8 +18,14 @@ firebase.initializeApp({
 
 const messaging = firebase.messaging();
 
-messaging.onBackgroundMessage((payload) => {
-  console.log('Received background message ', payload);
-  const { title, body } = payload.notification;
-  self.registration.showNotification(title, { body });
+messaging.onBackgroundMessage(function (payload) {
+  console.log('[Service Worker] Received background message ', payload);
+
+  const notificationTitle = payload.notification.title || 'Notification Title';
+  const notificationOptions = {
+    body: payload.notification.body || 'Notification Body',
+    icon: payload.notification.icon || '/icons/icon-192x192.png',
+  };
+
+  self.registration.showNotification(notificationTitle, notificationOptions);
 });
