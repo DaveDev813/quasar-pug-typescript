@@ -10,7 +10,8 @@
     "format": "prettier --write \"**/*.{js,ts,vue,scss,html,md,json}\" --ignore-path .gitignore",
     "test": "echo \"No test specified\" && exit 0",
     "dev": "quasar dev",
-    "build": "quasar build"
+    "build": "quasar build",
+    "runpwa": "quasar build -m pwa && npx serve dist/pwa"
   },
   "dependencies": {
     "@quasar/extras": "^1.16.4",
@@ -25,6 +26,7 @@
   "devDependencies": {
     "@intlify/vite-plugin-vue-i18n": "^3.3.1",
     "@quasar/app-vite": "^1.9.0",
+    "@types/firebase": "^3.2.3",
     "@types/node": "^20.14.8",
     "@typescript-eslint/eslint-plugin": "^7.16.0",
     "@typescript-eslint/parser": "^7.16.0",
@@ -37,7 +39,14 @@
     "typescript": "~5.5.4",
     "vite-plugin-checker": "^0.8.0",
     "vite-plugin-pug": "^0.4.1",
-    "vue-tsc": "^2.0.29"
+    "vue-tsc": "^2.0.29",
+    "workbox-build": "7.0.x",
+    "workbox-cacheable-response": "7.0.x",
+    "workbox-core": "7.0.x",
+    "workbox-expiration": "7.0.x",
+    "workbox-precaching": "7.0.x",
+    "workbox-routing": "7.0.x",
+    "workbox-strategies": "7.0.x"
   },
   "engines": {
     "node": "^20 || ^18 || ^16",

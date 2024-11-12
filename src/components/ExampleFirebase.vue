@@ -56,7 +56,7 @@ async function updateDeviceToken() {
         device_token: newToken,
       };
       await fetch(
-        'http://localhost:8888/SHORE_ALLGRADUATES/ag-notifications-backend/public/register',
+        'http://192.168.0.101:8888/SHORE_ALLGRADUATES/ag-notifications-backend/public/register',
         {
           method: 'POST',
           headers: {
@@ -75,6 +75,13 @@ function listenForMessages() {
   onMessage(messaging, (payload) => {
     console.log('Message received:', payload);
     // Handle foreground messages here
+
+    if (Notification.permission === 'granted' && payload.notification) {
+      new Notification(payload.notification.title || 'No title', {
+        body: payload.notification.body || 'No body',
+        icon: payload.notification.icon || '',
+      });
+    }
   });
 }
 
